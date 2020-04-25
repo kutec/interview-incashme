@@ -18,18 +18,14 @@ export class UsersComponent {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
-
-  /**
-   * Set the paginator after the view init since this component will
-   * be able to query its view for the initialized paginator.
-   */
-
+  
   ngOnInit() {
-    this.selectedType = "";
+    this.selectedType = "all";
     this.route.params.subscribe(params => {
-      console.log("params", params.type);
       this.routeParam = params.type;
-      this.onValChange(this.selectedType);
+      if (this.routeParam) {
+        this.onValChange(this.routeParam);
+      }
     });
   }
 
@@ -39,24 +35,17 @@ export class UsersComponent {
   }
 
   public onValChange(value) {
-    if (this.routeParam != undefined) {
-      console.log("1:", value);
-      this.changeRoute(this.route);
-      this.dataSource.filter = value.trim().toLocaleLowerCase();
-    } else {
-      console.log("2:", value);
-      this.selectedType = value;
-      this.changeRoute(this.selectedType);
-      this.dataSource.filter = value.trim().toLocaleLowerCase();
-    }
+    this.selectedType = value;
+    this.changeRoute(value);
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   changeRoute(routeParam) {
     console.log("changeRoute(): ", routeParam);
-    this.router.navigate(["users", routeParam]);
+    this.router.navigate(["/users", routeParam]);
   }
 
-  getRouteParam(){
+  getRouteParam() {
     this.route.params.subscribe(params => {
       console.log("params", params.type);
       this.routeParam = params.type;
