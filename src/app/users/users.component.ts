@@ -3,7 +3,7 @@ import { MatPaginator, MatTableDataSource, MatSort } from "@angular/material";
 import { mockUsers } from "./mock.users";
 
 @Component({
-  selector: "users",
+  selector: "app-users",
   styleUrls: ["users.component.css"],
   templateUrl: "users.component.html"
 })
