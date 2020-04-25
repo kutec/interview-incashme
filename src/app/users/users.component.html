@@ -1,6 +1,7 @@
 <div>
 
 	<h1>Users Component</h1>
+  
 
 	<p>By default all users are displayed. However, you can filtered out Users with given buttons below.</p>
 
@@ -8,7 +9,7 @@
 		<mat-button-toggle value="admin">Admin</mat-button-toggle>
 		<mat-button-toggle value="editor">Editor</mat-button-toggle>
 		<mat-button-toggle value="user">User</mat-button-toggle>
-	</mat-button-toggle-group>
+	</mat-button-toggle-group>  &nbsp;&nbsp;<span *ngIf="isToggled">back to <a routerLink="/users">All Users</a></span>
 
 	<mat-table #table [dataSource]="dataSource" matSort>
 

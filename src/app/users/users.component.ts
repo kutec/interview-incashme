@@ -13,6 +13,7 @@ export class UsersComponent {
   dataSource = new MatTableDataSource<User>(users);
   routeParam;
   selectedType: string;
+  isToggled = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -35,22 +36,14 @@ export class UsersComponent {
   }
 
   public onValChange(value) {
+    this.isToggled = true;
     this.selectedType = value;
     this.changeRoute(value);
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   changeRoute(routeParam) {
-    console.log("changeRoute(): ", routeParam);
     this.router.navigate(["/users", routeParam]);
-  }
-
-  getRouteParam() {
-    this.route.params.subscribe(params => {
-      console.log("params", params.type);
-      this.routeParam = params.type;
-      this.onValChange(this.selectedType);
-    });
   }
 }
 
