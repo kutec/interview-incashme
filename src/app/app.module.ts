@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 
-import { AppComponent } from "./app.component";
+import { AppComponent } from "./app.component"; 
 
 import { RoutingModule } from './routing.module';
 import { MaterialModule } from "./material.module";
@@ -25,7 +25,7 @@ const routes: Routes = [
     RoutingModule,
     MaterialModule
   ],
-  declarations: [UsersComponent, BaseComponent],
-  bootstrap: [BaseComponent]
+  declarations: [UsersComponent, AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
