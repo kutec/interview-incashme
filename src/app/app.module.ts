@@ -12,11 +12,6 @@ import { RoutingModule } from './routing.module';
 import { MaterialModule } from "./material.module";
 import { UsersComponent } from "./users/users.component";
 
-const routes: Routes = [
-  { path: "", redirectTo: "/users", pathMatch: "full" },
-  { path: "users", component: UsersComponent }
-];
-
 @NgModule({
   imports: [
     BrowserModule,
