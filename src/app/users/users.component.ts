@@ -20,7 +20,7 @@ export class UsersComponent {
   constructor(private route: ActivatedRoute, private router: Router) {}
   
   ngOnInit() {
-    this.selectedType = "all";
+    this.selectedType = "";
     this.route.params.subscribe(params => {
       this.routeParam = params.type;
       if (this.routeParam) {
