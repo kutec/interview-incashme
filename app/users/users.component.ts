@@ -1,18 +1,18 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
-import { mockUsers } from './mock.users';
-
+import { Component, ViewChild } from "@angular/core";
+import { MatPaginator, MatTableDataSource, MatSort } from "@angular/material";
+import { mockUsers } from "./mock.users";
 
 @Component({
-  selector: 'users',
-  styleUrls: ['users.component.css'],
-  templateUrl: 'users.component.html',
+  selector: "users",
+  styleUrls: ["users.component.css"],
+  templateUrl: "users.component.html"
 })
 export class UsersComponent {
-  displayedColumns: string[] = ['name', 'email', 'type', 'date'];
-  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+  displayedColumns: string[] = ["name", "email", "type", "date"];
+  dataSource = new MatTableDataSource<User>(users);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   /**
    * Set the paginator after the view init since this component will
@@ -20,18 +20,18 @@ export class UsersComponent {
    */
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }
 
-export interface Element {
+export interface User {
   name: string;
   position: number;
   weight: number;
   symbol: string;
 }
 
-const ELEMENT_DATA: Element[] = mockUsers;
-
+const users: User[] = mockUsers;
 
 /**  Copyright 2017 Google Inc. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
